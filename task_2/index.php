@@ -1,13 +1,25 @@
 <?php
 
-$wheather = "Дождь";
+$college = array(
+    "Студенты" => array(
+        "Никита",
+        "Алексей",
+        "Дмитрий",
+        "Евгений"
+    ),
+    "Преподаватели" => array(
+        "Никита Андреевич",
+        "Алексей Иванович",
+        "Дмитрий Петрович",
+        "Евгений Семенович"
+    )
+);
 
-if ($wheather == "Снег") {
-    echo "Идет снег";
-}else if ($wheather == "Дождь") {
-    echo "Идет дождь";
-}else if ($wheather == "Ясно") {
-    echo "Дождь не будет";
-}else{
-    echo 'Ясно';
+foreach ($college as $people => $items) {
+    echo "<h1>$people</h1>";
+    echo "<ul>";
+    foreach ($items as $item) {
+        echo "<li>$item</li>";
+    };
+    echo "</ul>";
 }
