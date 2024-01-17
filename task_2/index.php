@@ -1,11 +1,13 @@
 <?php
 
-$count = 23;
-if ($count >= 18){
-    echo "Ему больше 18";
-}else if($count > 14){
-    echo "Ему больше 14";
-}https://github.com/ninq4/class-work.git
-else{
-    echo "Ему меньше 18";
+$wheather = "Дождь";
+
+if ($wheather == "Снег") {
+    echo "Идет снег";
+}else if ($wheather == "Дождь") {
+    echo "Идет дождь";
+}else if ($wheather == "Ясно") {
+    echo "Дождь не будет";
+}else{
+    echo 'Ясно';
 }
