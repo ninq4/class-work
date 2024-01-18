@@ -4,18 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<ul class="list">
 
 <?php
-    $result = 0;
 
-    for ($i = 0; $i <= 30; $i++) {
-        $result += $i;
+    for ($i = 0; $i < 100; $i++) {
+        if($i < 10){
+            echo '<li class = "item">' .'0' . $i . ','. '</li>';
+        }else{
+            echo '<li class = "item">' . $i . ',' . '</li>';
+        }
+        if ($i == 99){
+            echo '<li class = "item">' . $i . '</li>';
+        }
+        
     }
 
-    echo $result;
 
 ?>
+</ul>
 </body>
 </html>
