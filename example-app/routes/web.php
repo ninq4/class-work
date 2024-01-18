@@ -25,4 +25,4 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [\App\Http\Controllers\FrontendController::class, 'index']) -> name('home');
-Route::get('/', [\App\Http\Controllers\FrontendController::class, 'about']) -> name('about');
+Route::get('/about', [\App\Http\Controllers\FrontendController::class, 'about']) -> name('about');
