@@ -14,12 +14,12 @@
     for ($i = 0; $i < 100; $i++) {
         if($i < 10){
             echo '<li class = "item">' .'0' . $i . ','. '</li>';
+        }else if ($i == 99){
+            echo '<li class = "item">' . $i . '</li>';
         }else{
             echo '<li class = "item">' . $i . ',' . '</li>';
         }
-        if ($i == 99){
-            echo '<li class = "item">' . $i . '</li>';
-        }
+
         
     }
 
