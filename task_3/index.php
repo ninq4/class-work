@@ -8,13 +8,10 @@
 <body>
 
 <?php
-    $result = "";
+    $result = 0;
 
-    for ($i = 0; $i <= 10; $i++) {
-        $result .= $i;
-        if($i != 10) {
-            $result .= "-";
-        }
+    for ($i = 0; $i <= 30; $i++) {
+        $result += $i;
     }
 
     echo $result;
