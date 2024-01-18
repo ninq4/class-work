@@ -13,12 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Открытие главной страницы
+//
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+//
+//// Открытие страницы  о нас
+//Route::get('/about', function (){
+//   return view('about');
+//});
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-// Открытие страницы  о нас
-Route::get('/about', function (){
-   return view('about');
-});
+Route::get('/', [\App\Http\Controllers\FrontendController::class, 'index']) -> name('home');
+Route::get('/', [\App\Http\Controllers\FrontendController::class, 'about']) -> name('about');
