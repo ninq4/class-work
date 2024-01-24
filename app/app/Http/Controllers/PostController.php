@@ -12,7 +12,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('post.index');
+        $posts = Post::all();
+        return view('post.index', compact('posts'));
     }
 
     /**
@@ -64,6 +65,8 @@ class PostController extends Controller
     public function edit(string $id)
     {
         return view('post.edit');
+
+
     }
 
     /**
@@ -77,8 +80,10 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect() -> route('post.index') -> with('success', 'Ваш пост был удален');
     }
 }

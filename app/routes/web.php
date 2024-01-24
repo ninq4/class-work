@@ -24,4 +24,5 @@ Route::prefix('/post') -> group(function () {
     Route::get('/edit', [\App\Http\Controllers\PostController::class, 'edit']) -> name('post.edit');
 
     Route::post('/store', [\App\Http\Controllers\PostController::class, 'store']) -> name('post.store');
+    Route::delete('/delete/{post}', [\App\Http\Controllers\PostController::class, 'destroy']) -> name('post.delete');
 });
