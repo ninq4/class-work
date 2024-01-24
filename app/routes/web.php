@@ -22,6 +22,7 @@ Route::prefix('/post') -> group(function () {
     Route::get('/index', [\App\Http\Controllers\PostController::class, 'index']) -> name('post.index');
     Route::get('/create', [\App\Http\Controllers\PostController::class, 'create']) -> name('post.create');
     Route::get('/edit/{post}', [\App\Http\Controllers\PostController::class, 'edit']) -> name('post.edit');
+    Route::get('/show/{post}', [\App\Http\Controllers\PostController::class, 'show']) -> name('post.show');
 
     Route::post('/store', [\App\Http\Controllers\PostController::class, 'store']) -> name('post.store');
     Route::delete('/delete/{post}', [\App\Http\Controllers\PostController::class, 'destroy']) -> name('post.delete');
