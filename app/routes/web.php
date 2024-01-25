@@ -28,3 +28,14 @@ Route::prefix('/post') -> group(function () {
     Route::delete('/delete/{post}', [\App\Http\Controllers\PostController::class, 'destroy']) -> name('post.delete');
     Route::put('/update/{post}', [\App\Http\Controllers\PostController::class, 'update']) -> name('post.update');
 });
+
+Route::prefix('/article') -> group(function () {
+    Route::get('/index', [\App\Http\Controllers\PostController::class, 'index']) -> name('article.index');
+    Route::get('/create', [\App\Http\Controllers\PostController::class, 'create']) -> name('article.create');
+    Route::get('/edit/{article}', [\App\Http\Controllers\PostController::class, 'edit']) -> name('article.edit');
+    Route::get('/show/{article}', [\App\Http\Controllers\PostController::class, 'show']) -> name('article.show');
+
+    Route::post('/store', [\App\Http\Controllers\PostController::class, 'store']) -> name('article.store');
+    Route::delete('/delete/{article}', [\App\Http\Controllers\PostController::class, 'destroy']) -> name('article.delete');
+    Route::put('/update/{article}', [\App\Http\Controllers\PostController::class, 'update']) -> name('article.update');
+});
