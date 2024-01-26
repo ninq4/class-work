@@ -23,20 +23,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                @forelse($categories as $category)
+                @forelse($tovars as $tovar)
                     <tr>
-                        <th scope="row">{{$category -> id}}</th>
-                        <td>{{$category -> name}}</td>
-                        <td> {{$category -> text}}</td>
-                            @if($category -> is_active == 1)
-                                <td class="alert alert-success text-center">Активен</td>
-                            @else
-                                <td class="alert alert-danger text-center">Неактивен</td>
-                            @endif
+                        <th scope="row">{{$tovar -> id}}</th>
+                        <td>{{$tovar -> name}}</td>
+                        <td> {{$tovar -> text}}</td>
+
 
                         <td>
-                            <a href="{{route('category.edit', $category->id)}}" class="btn btn-success mb-3">Редактировать</a>
-                            <a href="{{route('category.show', $category->id)}}" class="btn btn-warning mb-3">Посмотреть полностью</a>
+                            <a href="{{route('category.edit', $tovar->id)}}" class="btn btn-success mb-3">Редактировать</a>
+                            <a href="{{route('category.show', $tovar->id)}}" class="btn btn-warning mb-3">Посмотреть полностью</a>
                             <form class="mb-3" action="{{route('category.delete', $category->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
@@ -46,7 +42,7 @@
                     </tr>
                 @empty
                     <div class="alert alert-info" role="alert">
-                        {{__('Категории не найдены')}}
+                        {{__('Товар не найден')}}
                     </div>
 
                 @endforelse
