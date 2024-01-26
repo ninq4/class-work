@@ -9,7 +9,7 @@
                     {{$message}}
                 </div>
             @endif
-            <a href="{{route('category.create') }}" class="btn btn-primary">Новая категория</a>
+            <a href="{{route('tovar.create') }}" class="btn btn-primary">Новая категория</a>
         </div>
         <div class="row">
             <table class="table">
@@ -23,22 +23,37 @@
                 </tr>
                 </thead>
                 <tbody>
-                @forelse($tovars as $tovar)
+                @forelse($products as $product)
                     <tr>
-                        <th scope="row">{{$tovar -> id}}</th>
-                        <td>{{$tovar -> name}}</td>
-                        <td> {{$tovar -> text}}</td>
-
-
+                        <th scope="row">{{$product -> id}}</th>
+                        <td>{{$product -> name}}</td>
+                        <td> {{$product -> text}}</td>
+                        <td> {{$product -> category -> name }}</td>
                         <td>
-                            <a href="{{route('category.edit', $tovar->id)}}" class="btn btn-success mb-3">Редактировать</a>
-                            <a href="{{route('category.show', $tovar->id)}}" class="btn btn-warning mb-3">Посмотреть полностью</a>
-                            <form class="mb-3" action="{{route('category.delete', $category->id)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger">{{__('Удалить')}}</button>
-                            </form>
+                            @if ($product->is_active == 0)
+                                <div class="alert alert-danger text-center">
+                                    {{ __('Не активна') }}
+                                </div>
+                            @else
+                                <div class="alert alert-success text-center">
+                                    {{ __('Активна') }}
+                                </div>
+                            @endif
                         </td>
+                        <td>
+                            <img src="/images/products/{{$product -> image}}" alt="">
+                        </td>
+
+
+{{--                        <td>--}}
+{{--                            <a href="{{route('category.edit', $product->id)}}" class="btn btn-success mb-3">Редактировать</a>--}}
+{{--                            <a href="{{route('category.show', $product->id)}}" class="btn btn-warning mb-3">Посмотреть полностью</a>--}}
+{{--                            <form class="mb-3" action="{{route('category.delete', $product->id)}}" method="POST">--}}
+{{--                                @csrf--}}
+{{--                                @method('DELETE')--}}
+{{--                                <button class="btn btn-danger">{{__('Удалить')}}</button>--}}
+{{--                            </form>--}}
+{{--                        </td>--}}
                     </tr>
                 @empty
                     <div class="alert alert-info" role="alert">

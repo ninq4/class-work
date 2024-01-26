@@ -14,7 +14,12 @@ class Product extends Model
         'name',
         'text',
         'image',
-
-        'is_active'
+        'is_active',
+        'category_id'
     ];
+
+    public function category()
+    {
+        return $this -> belongsTo(Category::class, 'category_id', 'id');
+    }
 }
