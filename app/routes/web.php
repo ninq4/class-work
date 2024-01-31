@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('', [\App\Http\Controllers\MainController::class, 'index']) -> name('home');
-Route::get('/about', [\App\Http\Controllers\MainController::class, 'about']) -> name('about');
-Route::get('/contacts', [\App\Http\Controllers\MainController::class, 'contacts']) -> name('contacts');
-Route::get('/portfolio', [\App\Http\Controllers\MainController::class, 'portfolio']) -> name('portfolio');
+Route::get('/categories', [\App\Http\Controllers\MainController::class, 'category']) -> name('categories');
+Route::get('/products/{id}', [\App\Http\Controllers\MainController::class, 'products']) -> name('products');
+Route::get('/product-card/{id}', [\App\Http\Controllers\MainController::class, 'product']) -> name('product');
 //------------------------------------------------------------------------------------------------------------------
 
 Route::prefix('/post') -> group(function () {
@@ -44,6 +44,14 @@ Route::prefix('/category') -> group(function () {
 Route::prefix('/tovar') -> group(function (){
    Route::get('', [\App\Http\Controllers\Admin\ProductController::class, 'index'])-> name('tovar.index');
     Route::get('/create', [\App\Http\Controllers\Admin\ProductController::class, 'create'])-> name('tovar.create');
+    Route::get('/edit/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'edit']) -> name('tovar.edit');
+    Route::get('show/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'show']) -> name('tovar.show');
+
     Route::post('/store', [\App\Http\Controllers\Admin\ProductController::class, 'store'])-> name('tovar.store');
+
+    Route::delete('/delete/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'destroy'])-> name('tovar.delete');
+
+    Route::put('/update/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'update'])-> name('tovar.update');
+
 });
 

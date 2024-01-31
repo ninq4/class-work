@@ -1,10 +1,11 @@
 <header class="application__header header container">
-    <a class="header__logo">Interiorqu.</a>
+    <a href={{route('home')}} class="header__logo">Interiorqu.</a>
     <nav class="header__navbar navbar">
-        <li class="navbar__item"><a href="#home" class="navbar__item-link">Home</a></li>
+        <li class="navbar__item"><a href={{route('home')}} class="navbar__item-link">Home</a></li>
         <li class="navbar__item"><a href={{route('post.index')}} class="navbar__item-link">{{__('Посты')}}</a></li>
-        <li class="navbar__item"><a href="{{route('category.index')}}" class="navbar__item-link">{{__('Категории')}}</a></li>
+        <li class="navbar__item"><a href="{{route('category.index')}}" class="navbar__item-link">{{__('Все Категории')}}</a></li>
         <li class="navbar__item"><a href="{{route('tovar.index')}}" class="navbar__item-link">{{__('Товар')}}</a></li>
+        <li class="navbar__item"><a href="{{route('categories')}}" class="navbar__item-link">{{__('Категории')}}</a></li>
         <button class="navbar__btn">Contact Us</button>
     </nav>
     <div class="header__menu-toggler">

@@ -58,32 +58,58 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Category $category)
     {
-        //
+        $products = Product::where('category_id', $category);
+        return view('tovar.show', compact( 'products', 'category'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
-        //
+        $categories = Category::where('is_active', 1)-> get();
+        return view('tovar.edit', compact('product', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'text' => 'required',
+            'is_active' => 'required',
+            'category_id' => 'required',
+//            'image' => 'required|image|mimes:jpg,png,jpeg,bmp,webp,gif,svg|max:2048'
+        ]);
+
+        $input = $request-> all();
+
+        if($image = $request->file('image')){
+            $destionPath = 'images/products/';
+            $profileImage = date('YmHis') . "." . $image-> getClientOriginalExtension();
+            $image->move($destionPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }else{
+            unset($input['image']);
+        }
+
+
+        $product -> update($input);
+
+        return redirect() -> route('tovar.index') -> with('success', 'Товар успешно обновлен');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect() -> route('tovar.index') -> with('success', 'Ваш товар успешно удален');
     }
 }

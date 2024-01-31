@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -10,16 +12,21 @@ class MainController extends Controller
     {
         return view('welcome');
     }
-    public function about()
+
+    public function category()
     {
-        return view('about');
+        $categories = Category::where('is_active', 1)->get();
+        return view('category', compact('categories'));
     }
-    public function Portfolio()
+
+    public function products($id)
     {
-        return view('portfolio');
+        $products = Product::where('category_id', $id)->where('is_active', 1)->get();
+        return view('product', compact( 'products'));
     }
-    public function Contacts()
+    public function product($id)
     {
-        return view('contacts');
+        $product = Product::where('id', $id) -> where('is_active', 1) -> first();
+        return view('single-product', compact('product'));
     }
 }

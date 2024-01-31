@@ -9,17 +9,17 @@
                     {{$message}}
                 </div>
             @endif
-            <a href="{{route('tovar.create') }}" class="btn btn-primary">Новая категория</a>
+            <a href="{{route('tovar.create') }}" class="btn btn-primary">Новый товар</a>
         </div>
         <div class="row">
             <table class="table">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Название категории</th>
-                    <th scope="col">Описание категории</th>
-                    <th scope="col">Активность</th>
-                    <th scope="col">Действие</th>
+                    <th scope="col">{{__('Название категории')}}</th>
+                    <th scope="col">{{__('Описание категории')}}</th>
+                    <th scope="col">{{__('Активность')}}</th>
+                    <th scope="col">{{__('Действие')}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -45,15 +45,16 @@
                         </td>
 
 
-{{--                        <td>--}}
-{{--                            <a href="{{route('category.edit', $product->id)}}" class="btn btn-success mb-3">Редактировать</a>--}}
-{{--                            <a href="{{route('category.show', $product->id)}}" class="btn btn-warning mb-3">Посмотреть полностью</a>--}}
-{{--                            <form class="mb-3" action="{{route('category.delete', $product->id)}}" method="POST">--}}
-{{--                                @csrf--}}
-{{--                                @method('DELETE')--}}
-{{--                                <button class="btn btn-danger">{{__('Удалить')}}</button>--}}
-{{--                            </form>--}}
-{{--                        </td>--}}
+                        <td>
+                            <a href="{{route('tovar.edit', $product->id)}}" class="btn btn-success mb-3">Редактировать</a>
+                            <a href="{{route('tovar.show', $product-> category -> id)}}" class="btn btn-warning mb-3">Посмотреть все товары с этой категорией</a>
+                            <form class="mb-3" action="{{route('tovar.delete', $product -> id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger">{{__('Удалить')}}</button>
+                            </form>
+                        </td>
+                        <td>{{$product -> category -> id}}</td>
                     </tr>
                 @empty
                     <div class="alert alert-info" role="alert">
