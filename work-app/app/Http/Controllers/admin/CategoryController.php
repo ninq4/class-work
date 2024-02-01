@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -14,7 +14,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('category.index', compact('categories'));
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -22,7 +22,6 @@ class CategoryController extends Controller
      */
     public function create()
     {
-
         return view('categories.create');
     }
 
@@ -58,7 +57,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('categories.edit', compact('category'));
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -90,3 +89,4 @@ class CategoryController extends Controller
         return redirect() -> route('category.index') -> with('success', 'Ваша категория успешно удалена');
     }
 }
+

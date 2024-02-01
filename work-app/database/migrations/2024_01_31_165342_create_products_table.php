@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('text');
+            $table->text('color');
+            $table->text('brand');
+            $table->text('country');
+            $table->text('guarantee');
             $table->text('image');
             $table->boolean('is_active')-> default('0');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
